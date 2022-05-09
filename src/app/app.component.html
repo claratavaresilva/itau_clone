@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <app-saldo></app-saldo>
+  <div class="lancamentos">
+    <mat-accordion>
+      <mat-expansion-panel
+        (opened)="lancamentosFuturosAberto = true"
+        (closed)="lancamentosFuturosAberto = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>lançamentos futuros</mat-panel-title>
+          <mat-panel-description
+            class="toggle-exibir lancamentos-futuros-borderless"
+          >
+            {{ lancamentosFuturosAberto ? "ocultar" : "exibir" }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-tabela [dados]="entradasFuturas" [colunas]="colunas"></mat-tabela>
+        <mat-tabela [dados]="saidasFuturas" [colunas]="colunas"></mat-tabela>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-tabela [dados]="entradasSaidas" [colunas]="colunas"></mat-tabela>
+    <app-atualizado></app-atualizado>
+  </div>
+  <app-rodape></app-rodape>
+</div>

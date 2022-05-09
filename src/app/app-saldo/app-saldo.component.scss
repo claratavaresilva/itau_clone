@@ -1,0 +1,87 @@
+
+.dvPrincipal {
+  margin-top: 40px;
+}
+
+.dvInfo, #saldo, #btnSpan, #idObs, h1 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-weight: bold;
+}
+
+.dvInfo {
+  display: flex;
+  border-top: 1px solid rgb(214, 208, 204);
+  border-bottom: 1px solid rgb(214, 208, 204);
+  margin-top: -10px;
+}
+
+p {
+  font-weight: 800;
+  size: 16px;
+  line-height: 24px;
+}
+
+#titSaldo {
+  margin-top: 15px;
+  margin-bottom: -10px;
+}
+
+#saldo {
+  color: rgb(0, 122, 71);
+  width: 136px;
+  height: 24px;
+  margin-top: 14px;
+  margin-bottom: 17px;
+
+}
+
+#icon {
+  margin-top: 16px;
+  margin-bottom: 15px;
+  width: 136px;
+}
+
+#dvButton {
+  width: 05%;
+  text-align: right;
+}
+
+
+.botao {
+  color: rgb(16, 110, 176);
+}
+
+.dvSaldo {
+  width: 15%;
+}
+
+#btnSpan {
+  margin-top: -20px;
+  text-decoration: underline;
+}
+
+#idIcon {
+  margin-top: 20px;
+}
+
+button {
+  background-color: white;
+}
+
+#idObs {
+  color: rgb(86, 80, 76);
+  size: 14px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+#detalhe {
+  margin-top: 15px;
+  width: 80%;
+  height: 50px;
+  border-left: 1px solid rgb(214, 208, 204);
+  border-right: 1px solid rgb(214, 208, 204);
+}

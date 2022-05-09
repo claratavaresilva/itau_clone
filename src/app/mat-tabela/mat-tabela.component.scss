@@ -1,0 +1,106 @@
+/* Tabela */
+.tabela {
+  margin: 16px 0;
+}
+
+table.striped > tbody > tr:nth-child(odd) {
+  background-color: #FAF7F5 !important;
+}
+
+tr.mat-header-row, tr.mat-row {
+  height: 32px !important;
+}
+
+.mat-header-cell {
+  color: inherit;
+  font-size: inherit;
+  font-weight: normal;
+}
+
+th.mat-header-cell:first-of-type, td.mat-cell:first-of-type {
+  padding-left: 2% !important;
+}
+
+.mat-expansion-panel-body {
+  padding: 0;
+}
+
+
+/* Colunas */
+.mat-column-data {
+  width: 10%;
+  min-width: 100px;
+}
+
+.mat-column-lancamentos {
+  padding-left: 2% !important;
+}
+
+.mat-column-valor {
+  width: 15%;
+  text-align: right !important;
+}
+
+.mat-column-saldo {
+  text-align: right !important;
+  width: 15%;
+}
+
+.mat-column-detalhes {
+  padding-left: 25px !important;
+  width: 15%;
+}
+
+.mat-column-vazia {
+  text-align: right !important;
+  width: 15%;
+}
+
+
+/* Texto */
+.entrada {
+  text-align: right;
+  color: #007a47;
+  font-weight: 700;
+}
+
+.saida {
+  color: #b71c1c;
+  font-weight: 700;
+  text-align: right;
+}
+
+.saldo {
+  font-weight: 700;
+  text-align: right;
+}
+
+.lancamentos-titulo {
+  text-transform: uppercase;
+}
+
+
+/* Outros Ajustes */
+.pl {
+  padding-left: 2%;
+}
+
+.b {
+  font-weight: 700;
+}
+
+.add-border {
+  border: 1px solid #efe9e5;
+}
+
+.info-icon {
+  color: #106EB0;
+  font-size: 20px;
+}
+
+
+
+
+
+
+

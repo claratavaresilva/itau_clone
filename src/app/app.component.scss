@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+  line-height: 16px;
+}
+
+a {
+  text-decoration: underline;
+}
+
+.lancamentos {
+  border: 1px solid #EFE9E5;
+  border-radius: 0px 0px 4px 4px;
+}
+
+
+/* Tabela lançamentos furutos : Mat-Expansion */
+.toggle-exibir {
+  color: #106EB0;
+  max-width: 50px;
+}
+
+.mat-expansion-panel {
+  box-shadow: none;
+}
+
+.mat-expansion-panel-header.mat-expanded {
+  height: 48px;
+}
+
+#mat-expansion-panel-header-0 {
+  margin-bottom: 16px;
+  background: #FAF8F7;
+  border: 1px solid #89837f;
+}
+
+
+
+
+
+

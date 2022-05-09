@@ -1,0 +1,52 @@
+<div class="dvPrincipal">
+  <div>
+    <h1>extrato</h1>
+  </div>
+
+  <div class="dvInfo">
+    <div class="dvSaldo">
+      <p id="titSaldo">saldo em conta</p>
+      <div *ngIf="toDisplay; then display; else icon" id="saldo"></div>
+      <ng-template #display>
+        <p id="saldo">{{ resultSaldo | currency }}</p>      </ng-template>
+      <ng-template #icon>
+        <mat-icon id="icon">visibility_off</mat-icon>
+      </ng-template>
+    </div>
+
+    <div id="detalhe"></div>
+
+    <div id="dvButton">
+      <button mat-icon-button (click)="hide()" *ngIf="toDisplay; else oculto">
+        <div class="botao">
+          <div id="idIcon">
+            <mat-icon>visibility</mat-icon>
+          </div>
+          <div id="btnSpan">
+            <span>ocultar</span>
+          </div>
+        </div>
+      </button>
+
+      <ng-template #oculto>
+        <button mat-icon-button (click)="hide()">
+          <div class="botao">
+            <div id="idIcon">
+              <mat-icon>visibility_off</mat-icon>
+            </div>
+            <div id="btnSpan">
+              <span>exibir</span>
+            </div>
+          </div>
+        </button>
+      </ng-template>
+    </div>
+  </div>
+
+  <div id="idObs">
+    <span
+      >* Total contratado. A utilização do cheque especial e cheque especial
+      adicional está sujeita a encargos.</span
+    >
+  </div>
+</div>

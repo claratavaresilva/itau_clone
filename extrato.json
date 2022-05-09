@@ -1,0 +1,96 @@
+{
+    "dados": [
+        {
+            "dataLancamento": "2022-04-09",
+            "lancamento": "VESPER S.A",
+            "valor": 2677.56,
+            "detalhes": ""
+        },
+        {
+            "dataLancamento": "2022-04-18",
+            "lancamento": "ELETROPAULO 78059",
+            "valor": 2677.56,
+            "detalhes": ""
+        },
+        {
+            "dataLancamento": "2022-04-14",
+            "lancamento": "PORTO SEGURO SEGUROS",
+            "valor": -17.56,
+            "detalhes": ""
+        },
+        {
+            "dataLancamento": "2022-04-15",
+            "lancamento": "COMPRA CARREF.PO",
+            "valor": -2230.56,
+            "detalhes": ""
+        },
+        {
+            "dataLancamento": "2022-04-15",
+            "lancamento": "COMPRA CARREF.PO",
+            "valor": -2230.56,
+            "detalhes": ""
+        },
+        {
+            "dataLancamento": "2022-04-13",
+            "lancamento": "RESGATE CDB",
+            "valor": 2031.21,
+            "detalhes": ""
+        },
+        {
+            "dataLancamento": "2022-04-16",
+            "lancamento": "PAG. SALARIO",
+            "valor": 3590.21,
+            "detalhes": ""
+        },
+        {
+            "dataLancamento": "2022-04-16",
+            "lancamento": "TELEFONICA 32320-9302",
+            "valor": 1877.20,
+            "detalhes": ""
+        },
+        {
+            "dataLancamento": "2022-04-16",
+            "lancamento": "IPVA",
+            "valor": -293.20,
+            "detalhes": ""
+        }
+    ],
+    "saldo": [
+        {
+            "saldo": 2000.21,
+            "lis": 200.32
+        }
+    ],
+    "datas": [
+        {
+            "data": "2022-04-09"
+        },
+        {
+            "data": "2022-05-10"
+        },
+        {
+            "data": "2022-02-27"
+        },
+        {
+            "data": "2022-05-30"
+        },
+        {
+            "data": "2022-03-17"
+        },
+        {
+            "data": "2022-04-27"
+        },
+        {
+            "data": "2022-04-07"
+        }
+    ],
+    "conta": [
+        {
+            "agencia": "1500",
+            "conta": "05202",
+            "dac": "0",
+            "nome": "t2jsxj",
+            "sobrenome": "xr3zbvmovp"
+        }
+    ]
+}

@@ -1,0 +1,82 @@
+::ng-deep div.mat-expansion-panel-body {
+  padding: 0;
+}
+
+
+
+<div class="row">
+  <p class="b pl">entradas futuras</p>
+  <table class="tabela striped">
+    <thead>
+      <tr>
+        <td class="col-data pl">data</td>
+        <td class="col-lancamentos pl">lançamentos</td>
+        <td class="col-valor pl">valor (R$)</td>
+        <td class="col-saldo pl">saldo</td>
+        <td class="col-detalhes pl">detalhes</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="add-border">
+        <td class="col-data add-border pl">14/09/2021</td>
+        <td class="lancamentos-titulo pl">Telefonica 3274-828</td>
+        <td class="entrada pl">1.877,00</td>
+        <td class="pl"></td>
+        <td class="pl"></td>
+      </tr>
+      <tr class="add-border">
+        <td class="add-border pl">15/09/2021</td>
+        <td class="lancamentos-titulo pl">Vesper S. A.</td>
+        <td class="entrada pl">2.234,00</td>
+        <td class="pl"></td>
+        <td class="pl"></td>
+      </tr>
+      <tr class="add-border">
+        <td class="add-border pl">16/09/2021</td>
+        <td class="lancamentos-titulo pl">Eletropaulo 78059</td>
+        <td class="entrada pl">2.679,00</td>
+        <td class="pl"></td>
+        <td class="pl"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="row">
+  <p class="b pl">saídas futuras</p>
+  <table class="tabela striped">
+    <thead>
+      <tr>
+        <td class="col-data pl">data</td>
+        <td class="col-lancamentos pl">lançamentos</td>
+        <td class="col-valor pl">valor (R$)</td>
+        <td class="col-saldo pl">saldo</td>
+        <td class="col-detalhes pl">detalhes</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="add-border">
+        <td class="add-border pl">10/09/2021</td>
+        <td class="lancamentos-titulo pl">Porto Seguro Seguros</td>
+        <td class="saida pl">- 1.877,00</td>
+        <td class="pl"></td>
+        <td class="pl"></td>
+      </tr>
+      <tr class="add-border">
+        <td class="add-border pl">10/09/2021</td>
+        <td class="lancamentos-titulo pl">Compra Carref. PO</td>
+        <td class="saida pl">- 2.234,00</td>
+        <td class="pl"></td>
+        <td class="pl"></td>
+      </tr>
+      <tr class="add-border">
+        <td class="add-border pl">10/09/2021</td>
+        <td class="lancamentos pl">SABESP</td>
+        <td class="saida pl">- 2.679,00</td>
+        <td class="pl"></td>
+        <td class="pl"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
