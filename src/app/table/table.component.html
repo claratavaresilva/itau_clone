@@ -1,0 +1,152 @@
+<mat-tab-group>
+  <mat-tab label="lançamentos">
+    <div class="container-10">
+      <div class="container-11">
+        <div class="container-btn">
+          <span>vizualizar</span>
+          <button
+            (click)="changeExtrato('todos') && enableDisableRule('todos')"
+            [ngClass]="{
+              btnblue: btnTodos,
+              btnwhite: true
+            }"
+          >
+            todos
+          </button>
+          <button
+            (click)="changeExtrato('saidas') && enableDisableRule('saidas')"
+            [ngClass]="{ btnwhite: btnSaidas, btnblue: !btnSaidas }"
+          >
+            saídas
+          </button>
+          <button
+            (click)="changeExtrato('entradas') && enableDisableRule('entradas')"
+            [ngClass]="{ btnwhite: btnEntradas, btnblue: !btnEntradas }"
+          >
+            entradas
+          </button>
+          <button
+            (click)="changeExtrato('futuros') && enableDisableRule('futuros')"
+            [ngClass]="{ btnwhite: btnFuturos, btnblue: !btnFuturos }"
+          >
+            futuros
+          </button>
+        </div>
+
+        <div class="container-12">
+          <div class="container-13">
+            <div class="select">
+              <mat-label>período específico</mat-label>
+              <mat-form-field>
+                <mat-select
+                  [(ngModel)]="selectedPeriodo"
+                  matNativeControl
+                  (selectionChange)="optionSelected($event.value)"
+                  panelClass="mat-select"
+                >
+                  <mat-option
+                    *ngFor="let option of options"
+                    [value]="option.id"
+                  >
+                    {{ option.viewValue }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="select">
+              <mat-label>ordenar por</mat-label>
+              <mat-form-field>
+                <mat-select
+                  [(ngModel)]="selectedSort"
+                  matNativeControl
+                  (selectionChange)="sort($event.value)"
+                  panelClass="mat-select"
+                >
+                  <mat-option *ngFor="let sort of sorts" [value]="sort.id">
+                    {{ sort.viewValue }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="container-input">
+            <mat-label>busca</mat-label>
+            <mat-form-field>
+              <input
+                matInput
+                [(ngModel)]="lancamento"
+                (ngModelChange)="Search()"
+                type="search"
+                placeholder="ex: saque, TED, DOC"
+                autocomplete="off"
+              />
+              <mat-icon [ngStyle]="{ color: 'darkorange' }" matSuffix
+                >search</mat-icon
+              >
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="resultado" *ngIf="botao != 'futuros'">
+          <div *ngIf="resultado">
+            resultado
+            <span *ngIf="botao == 'todos'">
+              de <b>todas</b> as transações
+            </span>
+            <span *ngIf="botao == 'entradas' || botao == 'saidas'">
+              das <b>{{ botao }}</b>
+            </span>
+            <span *ngIf="selectedPeriodo == 1"> de<b> ontem</b></span>
+
+            <span
+              *ngIf="
+                selectedPeriodo == 7 ||
+                selectedPeriodo == 30 ||
+                selectedPeriodo == 90
+              "
+            >
+              do período dos últimos <b>{{ selectedPeriodo }} dias</b>
+            </span>
+            <span> para o termo {{ lancamento }} </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lancamentos">
+        <mat-accordion>
+          <mat-expansion-panel
+            (opened)="lancamentosFuturosAberto = true"
+            (closed)="lancamentosFuturosAberto = false"
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title>lançamentos futuros</mat-panel-title>
+              <mat-panel-description
+                class="toggle-exibir lancamentos-futuros-borderless"
+              >
+                {{ lancamentosFuturosAberto ? "ocultar" : "exibir" }}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-tabela
+              titulo="entradas futuras"
+              *ngIf="entradasFuturas$ | async as dados"
+              [dados]="dados"
+              [colunas]="colunas"
+            ></mat-tabela>
+            <mat-tabela
+              titulo="saídas futuras"
+              *ngIf="saidasFuturas$ | async as dados"
+              [dados]="dados"
+              [colunas]="colunas"
+            ></mat-tabela>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <mat-tabela
+          titulo="entradas/saídas"
+          *ngIf="entradasSaidas$ | async as dados"
+          [dados]="dados"
+          [colunas]="colunas"
+        ></mat-tabela>
+        <app-atualizado></app-atualizado>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>

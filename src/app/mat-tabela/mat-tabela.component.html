@@ -1,24 +1,22 @@
 <div class="row">
-  <p class="b pl">{{ tituloTabela }}</p>
-  <table mat-table [dataSource]="dataSource" class="tabela striped">
+  <p class="b pl" *ngIf="dataSource.data.length >= 1">{{ tituloTabela }}</p>
+  <table
+    mat-table
+    *ngIf="dataSource.data.length >= 1; else noData"
+    [dataSource]="dataSource"
+    class="tabela striped"
+  >
     <ng-container matColumnDef="data">
       <th mat-header-cell *matHeaderCellDef>data</th>
       <td class="add-border" mat-cell *matCellDef="let elemento">
-        {{ elemento.data }}
+        {{ elemento.dataLancamento | date: "dd/MM/yyyy" }}
       </td>
     </ng-container>
 
     <ng-container matColumnDef="lancamentos">
       <th mat-header-cell *matHeaderCellDef>lançamentos</th>
-      <td
-        class="lancamentos-titulo pl"
-        [ngClass]="{
-          b: elemento.lancamentos.startsWith('saldo ')
-        }"
-        mat-cell
-        *matCellDef="let elemento"
-      >
-        {{ elemento.lancamentos }}
+      <td class="lancamentos-titulo pl" mat-cell *matCellDef="let elemento">
+        {{ elemento.lancamento }}
       </td>
     </ng-container>
 
@@ -47,10 +45,18 @@
 
     <ng-container matColumnDef="detalhes">
       <th mat-header-cell *matHeaderCellDef>detalhes</th>
-      <td mat-cell *matCellDef="let elemento">{{ elemento.detalhes }}</td>
+      <td mat-cell *matCellDef="let elemento">
+        {{ elemento.detalhes }}
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="colunas"></tr>
     <tr mat-row *matRowDef="let linha; columns: colunas"></tr>
   </table>
+  <ng-template #noData>
+    <div class="no-results" colspan="5">
+      <p>;D</p>
+      <p>nenhum resultado encontrado</p>
+    </div>
+  </ng-template>
 </div>

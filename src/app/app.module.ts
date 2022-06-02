@@ -24,6 +24,13 @@ import { LOCALE_ID } from '@angular/core';
 import { DEFAULT_CURRENCY_CODE } from '@angular/core';
 import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+import { TableComponent } from './table/table.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 registerLocaleData(ptBr);
 
@@ -35,6 +42,7 @@ registerLocaleData(ptBr);
     MatTabelaComponent,
     RodapeComponent,
     AtualizadoComponent,
+    TableComponent,
   ],
 
   imports: [
@@ -51,6 +59,12 @@ registerLocaleData(ptBr);
     MatExpansionModule,
     MatIconModule,
     MatTableModule,
+    MatInputModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatButtonToggleModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [
     DadosService,

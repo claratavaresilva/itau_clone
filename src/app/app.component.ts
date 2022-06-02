@@ -8,12 +8,4 @@ import { DadosService } from './services/dados.service';
 })
 export class AppComponent {
   title = 'itau';
-  lancamentosFuturosAberto = false;
-  colunas: string[] = ['data', 'lancamentos', 'valor', 'saldo', 'detalhes'];
-
-  constructor(private dadosService: DadosService) {}
-
-  entradasSaidas = this.dadosService.getEntradasSaidas();
-  entradasFuturas = this.dadosService.getEntradasFuturas();
-  saidasFuturas = this.dadosService.getSaidasFuturas();
 }

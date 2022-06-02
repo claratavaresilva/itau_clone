@@ -6,12 +6,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-
-import {
-  DadosService,
-  ModuloTabela,
-  TabelaExtrato,
-} from '../services/dados.service';
+import { Observable } from 'rxjs';
+import { List, TabelaExtrato } from '../services/dados.service';
 
 @Component({
   selector: 'mat-tabela',
@@ -20,26 +16,23 @@ import {
   encapsulation: ViewEncapsulation.None,
 })
 export class MatTabelaComponent implements OnInit {
-  @Output() dataSource: any;
+  @Input() dataSource: any;
   tituloTabela: string;
   exibirSaldo = false;
-  @Input() titulo: string;
-  @Input() dados: ModuloTabela;
+  @Input() dados: List;
   @Input() colunas: string[];
+  @Input() titulo: string;
 
-  constructor(private dadosService: DadosService) {}
+  constructor() {}
 
   ngOnInit() {
-    this.tituloTabela = this.dados.titulo;
-    this.exibirSaldo = this.verificaSaldo(this.dados.dados);
-    this.dataSource = new MatTableDataSource(this.dados.dados);
+    /*     this.exibirSaldo = this.verificaSaldo(this.dados.dados);
+     */
+    this.tituloTabela = this.titulo;
+    this.dataSource = new MatTableDataSource(this.dados.list);
   }
 
-  getDados() {
-    this.dadosService;
-  }
-
-  verificaSaldo(dados: TabelaExtrato[]) {
+  /* verificaSaldo(dados: TabelaExtrato[]) {
     let soma;
     for (let index = 0; index < this.dados.dados.length; index++) {
       soma = dados[index].saldo;
@@ -48,5 +41,5 @@ export class MatTabelaComponent implements OnInit {
       }
     }
     return false;
-  }
+  } */
 }

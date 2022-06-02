@@ -8,7 +8,10 @@
       <p id="titSaldo">saldo em conta</p>
       <div *ngIf="toDisplay; then display; else icon" id="saldo"></div>
       <ng-template #display>
-        <p id="saldo">{{ resultSaldo | currency }}</p>      </ng-template>
+        <p id="saldo" *ngIf="saldo$ | async as saldo">
+          {{ saldo | currency }}
+        </p>
+      </ng-template>
       <ng-template #icon>
         <mat-icon id="icon">visibility_off</mat-icon>
       </ng-template>
