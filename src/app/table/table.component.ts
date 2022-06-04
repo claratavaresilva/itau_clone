@@ -1,6 +1,4 @@
-import { NONE_TYPE } from '@angular/compiler';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { EMPTY, map, Observable } from 'rxjs';
 import { DadosService, List, TabelaExtrato } from '../services/dados.service';
 interface Option {
