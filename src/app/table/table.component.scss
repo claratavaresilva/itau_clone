@@ -79,7 +79,7 @@ input:focus {
 }
 
 .mat-select mat-option:hover {
-  border-left: solid 4px #ec7000;
+  background: #faf7f5 !important;
 }
 
 .mat-select-arrow {
@@ -90,7 +90,7 @@ input:focus {
 }
 
 .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
-  background: none;
+  background: #faf7f5;
   border-left: solid 4px #ec7000;
 }
 
@@ -137,6 +137,17 @@ input:focus {
   color: #106eb0;
   background-color: #ffffff;
 }
+
+.container-btn button:hover {
+  background: #e4f5fc !important;
+  color: #106eb0 !important;
+}
+
+.container-btn button:focus {
+  outline: none !important;
+  background-color: #106eb0 !important;
+  color: #ffffff !important;
+}
 .btnwhite {
   background-color: #ffffff;
   color: #106eb0;
@@ -147,15 +158,6 @@ input:focus {
   color: #ffffff;
 }
 
-button:hover {
-  background: #e4f5fc;
-  color: #106eb0;
-}
-button:focus {
-  outline: auto;
-  background-color: #106eb0;
-  color: #ffffff;
-}
 .mat-input-element {
   color: #231d19;
 }
@@ -173,4 +175,7 @@ select {
 .resultado {
   margin-left: 30%;
   margin-bottom: 1;
+}
+input {
+  margin: 0 0 0 0 !important;
 }

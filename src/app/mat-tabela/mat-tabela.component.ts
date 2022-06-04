@@ -28,6 +28,7 @@ export class MatTabelaComponent implements OnInit {
   ngOnInit() {
     /*     this.exibirSaldo = this.verificaSaldo(this.dados.dados);
      */
+    this.exibirSaldo = true;
     this.tituloTabela = this.titulo;
     this.dataSource = new MatTableDataSource(this.dados.list);
   }

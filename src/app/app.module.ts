@@ -31,6 +31,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { ErroComponent } from './erro/erro.component';
 
 registerLocaleData(ptBr);
 
@@ -43,6 +44,7 @@ registerLocaleData(ptBr);
     RodapeComponent,
     AtualizadoComponent,
     TableComponent,
+    ErroComponent,
   ],
 
   imports: [

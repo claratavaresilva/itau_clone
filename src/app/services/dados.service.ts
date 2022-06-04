@@ -13,6 +13,7 @@ export interface TabelaExtrato {
   lancamento: string;
   valor: number;
   saldo: number;
+  saldoTotal: number;
   detalhes: string;
 }
 
@@ -40,13 +41,13 @@ export class DadosService {
   getEntradasSaidas(params: Params): Observable<List> {
     return this.http.post<List>(this.URL_ExtratoPassado, params).pipe(
       map((items) => {
-        let dadosFiltrados = items.list.sort(
+        let dadosOrdenados = items.list.sort(
           (x, y) =>
             +new Date(x.dataLancamento).getTime() -
             +new Date(y.dataLancamento).getTime()
         );
         let list = {
-          list: dadosFiltrados,
+          list: dadosOrdenados,
         };
         return list;
       }),
@@ -57,13 +58,13 @@ export class DadosService {
   getEntradasFuturas(params: Params): Observable<List> {
     return this.http.post<List>(this.URL_EntradasFuturas, params).pipe(
       map((items) => {
-        let dadosFiltrados = items.list.sort(
+        let dadosOrdenados = items.list.sort(
           (x, y) =>
             +new Date(x.dataLancamento).getTime() -
             +new Date(y.dataLancamento).getTime()
         );
         let list = {
-          list: dadosFiltrados,
+          list: dadosOrdenados,
         };
         return list;
       }),
@@ -74,13 +75,13 @@ export class DadosService {
   getSaidasFuturas(params: Params): Observable<List> {
     return this.http.post<List>(this.URL_SaidasFuturas, params).pipe(
       map((items) => {
-        let dadosFiltrados = items.list.sort(
+        let dadosOrdenados = items.list.sort(
           (x, y) =>
             +new Date(x.dataLancamento).getTime() -
             +new Date(y.dataLancamento).getTime()
         );
         let list = {
-          list: dadosFiltrados,
+          list: dadosOrdenados,
         };
         return list;
       }),
@@ -91,13 +92,13 @@ export class DadosService {
   getSaidasPassadas(params: Params): Observable<List> {
     return this.http.post<List>(this.URL_SaidasPassadas, params).pipe(
       map((items) => {
-        let dadosFiltrados = items.list.sort(
+        let dadosOrdenados = items.list.sort(
           (x, y) =>
             +new Date(x.dataLancamento).getTime() -
             +new Date(y.dataLancamento).getTime()
         );
         let list = {
-          list: dadosFiltrados,
+          list: dadosOrdenados,
         };
         return list;
       }),
@@ -108,20 +109,19 @@ export class DadosService {
   getEntradasPassadas(params: Params): Observable<List> {
     return this.http.post<List>(this.URL_EntradasPassadas, params).pipe(
       map((items) => {
-        let dadosFiltrados = items.list.sort(
+        let dadosOrdenados = items.list.sort(
           (x, y) =>
             +new Date(x.dataLancamento).getTime() -
             +new Date(y.dataLancamento).getTime()
         );
         let list = {
-          list: dadosFiltrados,
+          list: dadosOrdenados,
         };
         return list;
       }),
       retry(2)
     );
   }
-
   getSaldoDoDia(): Observable<number> {
     return this.http.post<number>(this.URL_saldo, {
       agencia: '5555',
@@ -131,16 +131,4 @@ export class DadosService {
   }
 
   extrato: Array<TabelaExtrato>;
-
-  saldo: Observable<List> = of({
-    list: [
-      {
-        dataLancamento: new Date(),
-        lancamento: 'SALDO DO DIA',
-        valor: 0,
-        saldo: 2200.53,
-        detalhes: '',
-      },
-    ],
-  });
 }

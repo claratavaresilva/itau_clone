@@ -7,5 +7,6 @@ import { DadosService } from './services/dados.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  hasError: boolean;
   title = 'itau';
 }
