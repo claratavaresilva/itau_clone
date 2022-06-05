@@ -1,5 +1,4 @@
-import { Component, ContentChild, Output, TemplateRef } from '@angular/core';
-import { DadosService } from './services/dados.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { EMPTY, map, Observable } from 'rxjs';
+import { EMPTY, map, Observable, retry } from 'rxjs';
 import { DadosService, List, TabelaExtrato } from '../services/dados.service';
 interface Option {
   id: number;
@@ -58,7 +58,7 @@ export class TableComponent implements OnInit {
     .pipe(
       map((value) => {
         let dados = value.list;
-        let dadosFiltrados = this.filtro(dados); //filtro de acordo com o periodo
+        let dadosFiltrados = this.filter(dados); //filtro de acordo com o periodo
         let dadosOrdenados = this.sortArray(dadosFiltrados); //ordenação de acordo com a ordem selecionada
         return {
           list: dadosOrdenados,
@@ -74,7 +74,7 @@ export class TableComponent implements OnInit {
     .pipe(
       map((value) => {
         let dados = value.list;
-        let dadosFiltrados = this.filtro(dados);
+        let dadosFiltrados = this.filter(dados);
         let dadosOrdenados = this.sortArray(dadosFiltrados);
         return {
           list: dadosOrdenados,
@@ -106,13 +106,14 @@ export class TableComponent implements OnInit {
           this.setDados(dados[count], count, dados);
           count++;
         }
-        let dadosFiltrados = this.PushSaldo(dados);
+        let dadosFiltrados = this.pushSaldo(dados);
         let dadosOrdenados = this.sortArray(dadosFiltrados);
 
         return {
           list: dadosOrdenados,
         };
-      })
+      }),
+      retry(2)
     );
   //filtro botoes
   botao: string = 'todos';
@@ -270,12 +271,12 @@ export class TableComponent implements OnInit {
         saldo: value.saldoTotal,
         lancamento: 'SALDO DO DIA',
         valor: 0,
-        saldoTotal: value.saldo,
+        saldoTotal: 0,
       });
     }
   }
   //adiciona o saldo anterior e o saldo do dia de hoje na tabela
-  private PushSaldo(array: TabelaExtrato[]) {
+  private pushSaldo(array: TabelaExtrato[]) {
     let dadosAnteriores = array.filter(
       (data) =>
         +new Date(data.dataLancamento).getTime() <
@@ -308,7 +309,7 @@ export class TableComponent implements OnInit {
   }
 
   //filtra o array de acordo com o periodo selecionado
-  filtro(array: TabelaExtrato[]) {
+  filter(array: TabelaExtrato[]) {
     let dadosfiltrados = array.filter(
       (data) =>
         +new Date(data.dataLancamento).getTime() >=
