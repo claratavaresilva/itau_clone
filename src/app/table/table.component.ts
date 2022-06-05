@@ -183,64 +183,12 @@ export class TableComponent implements OnInit {
   optionSelected(event: any) {
     const periodo = event;
     this.selectedPeriodo = periodo;
-    if (this.botao == 'todos') {
-      this.entradasSaidas$ = this.dadosService
-        .getEntradasSaidas({ agencia: '0123', conta: '00587', dac: '1' })
-        .pipe(
-          map((value) => {
-            let dados = value.list
-              .reverse()
-              .map((item: TabelaExtrato, index: number) => {
-                if (index == 0) {
-                  item.saldoTotal = this.saldo;
-                } else {
-                  item.saldoTotal =
-                    value.list[index - 1].saldoTotal -
-                    value.list[index - 1].valor;
-                }
-                return item;
-              });
-            dados = dados.reverse();
-            let count = 0;
-            while (dados[count]) {
-              this.setDados(dados[count], count, dados);
-              count++;
-            }
-            let dadosFiltrados = this.PushSaldo(dados);
-            let dadosOrdenados = this.sortArray(dadosFiltrados);
-
-            return {
-              list: dadosOrdenados,
-            };
-          })
-        );
-    } else if (this.botao == 'entradas') {
-      this.entradasSaidas$ = this.dadosService
-        .getEntradasPassadas({ agencia: '0123', conta: '00587', dac: '1' })
-        .pipe(
-          map((value) => {
-            let dados = value.list;
-            let dadosFiltrados = this.filtro(dados);
-            let dadosOrdenados = this.sortArray(dadosFiltrados);
-            return {
-              list: dadosOrdenados,
-            };
-          })
-        );
-    } else if (this.botao == 'saidas') {
-      this.entradasSaidas$ = this.dadosService
-        .getSaidasPassadas({ agencia: '0123', conta: '00587', dac: '1' })
-        .pipe(
-          map((value) => {
-            let dados = value.list;
-            let dadosFiltrados = this.filtro(dados);
-            let dadosOrdenados = this.sortArray(dadosFiltrados);
-            return {
-              list: dadosOrdenados,
-            };
-          })
-        );
-    }
+    this.entradasSaidas$ = this.changeExtrato(this.botao).pipe(
+      map((item) => {
+        let dados = item.list;
+        return { list: dados };
+      })
+    );
   }
 
   //ordenação
@@ -251,36 +199,17 @@ export class TableComponent implements OnInit {
     { id: 2, viewValue: 'mais recente' },
   ];
   sort(event: any) {
-    this.selectedSort = event;
-    if (this.selectedSort == 1) {
-      this.entradasSaidas$ = this.entradasSaidas$.pipe(
-        map((items) => {
-          let dadosOrdenados = items.list.sort(
-            (x, y) =>
-              +new Date(x.dataLancamento).getTime() -
-              +new Date(y.dataLancamento).getTime()
-          );
-          let list = {
-            list: dadosOrdenados,
-          };
-          return list;
-        })
-      );
-    } else if (this.selectedSort == 2) {
-      this.entradasSaidas$ = this.entradasSaidas$.pipe(
-        map((items) => {
-          let dadosOrdenados = items.list.sort(
-            (y, x) =>
-              +new Date(x.dataLancamento).getTime() -
-              +new Date(y.dataLancamento).getTime()
-          );
-          let list = {
-            list: dadosOrdenados,
-          };
-          return list;
-        })
-      );
-    }
+    const sort = event;
+    this.selectedSort = sort;
+    this.entradasSaidas$ = this.entradasSaidas$.pipe(
+      map((items) => {
+        let dadosOrdenados = this.sortArray(items.list);
+        let list = {
+          list: dadosOrdenados,
+        };
+        return list;
+      })
+    );
   }
   //filtro de busca
   Search() {
@@ -377,6 +306,7 @@ export class TableComponent implements OnInit {
     });
     return dadosfiltrados;
   }
+
   //filtra o array de acordo com o periodo selecionado
   filtro(array: TabelaExtrato[]) {
     let dadosfiltrados = array.filter(
