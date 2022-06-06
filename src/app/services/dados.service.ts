@@ -35,6 +35,7 @@ export class DadosService {
   URL_SaidasFuturas = 'http://localhost:8080/saidasFuturas';
   URL_EntradasPassadas = 'http://localhost:8080/entradasPassadas';
   URL_SaidasPassadas = 'http://localhost:8080/saidasPassadas';
+  static http: HttpClient;
 
   constructor(private http: HttpClient) {}
 
@@ -128,6 +129,12 @@ export class DadosService {
       conta: '44444',
       dac: '1',
     });
+  }
+
+  static getEntradasSaidas(params: Params): Observable<List> {
+    return this.http
+      .post<List>('http://localhost:8080/extratoPassado', params)
+      .pipe(map((response) => response));
   }
 
   extrato: Array<TabelaExtrato>;
