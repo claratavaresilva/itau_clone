@@ -26,21 +26,19 @@ export class MatTabelaComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    /*     this.exibirSaldo = this.verificaSaldo(this.dados.dados);
-     */
-    this.exibirSaldo = true;
+    this.exibirSaldo = this.verificaSaldo(this.dados.list);
     this.tituloTabela = this.titulo;
     this.dataSource = new MatTableDataSource(this.dados.list);
   }
 
-  /* verificaSaldo(dados: TabelaExtrato[]) {
+  verificaSaldo(dados: TabelaExtrato[]) {
     let soma;
-    for (let index = 0; index < this.dados.dados.length; index++) {
+    for (let index = 0; index < this.dados.list.length; index++) {
       soma = dados[index].saldo;
       if (soma > 0) {
         return true;
       }
     }
     return false;
-  } */
+  }
 }

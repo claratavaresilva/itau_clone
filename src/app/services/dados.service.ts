@@ -17,10 +17,6 @@ export interface TabelaExtrato {
   detalhes: string;
 }
 
-export interface Titulo {
-  titulo: string;
-}
-
 export interface List {
   list: TabelaExtrato[];
 }
@@ -130,12 +126,4 @@ export class DadosService {
       dac: '1',
     });
   }
-
-  static getEntradasSaidas(params: Params): Observable<List> {
-    return this.http
-      .post<List>('http://localhost:8080/extratoPassado', params)
-      .pipe(map((response) => response));
-  }
-
-  extrato: Array<TabelaExtrato>;
 }

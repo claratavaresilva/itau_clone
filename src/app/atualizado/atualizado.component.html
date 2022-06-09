@@ -1,3 +1,9 @@
 <p class="atualizado">
-  atualizado em <strong>31/08/2021</strong>, às <strong>14:55:40h</strong>
+  atualizado em <strong>{{ data | date: "dd/MM/yyyy" }}</strong
+  >, às
+  <strong
+    >{{ data.getHours() }}:{{ data.getMinutes() }}:{{
+      data.getSeconds()
+    }}h</strong
+  >
 </p>

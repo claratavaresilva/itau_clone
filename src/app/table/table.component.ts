@@ -254,7 +254,7 @@ export class TableComponent implements OnInit {
     return array;
   }
 
-  //adiciona o saldo do dia em cada um dos dias
+  //adiciona o saldo do dia a cada um dos dias
   private setDados(
     value: TabelaExtrato,
     index: number,

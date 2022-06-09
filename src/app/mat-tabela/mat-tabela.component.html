@@ -15,7 +15,14 @@
 
     <ng-container matColumnDef="lancamentos">
       <th mat-header-cell *matHeaderCellDef>lançamentos</th>
-      <td class="lancamentos-titulo pl" mat-cell *matCellDef="let elemento">
+      <td
+        class="lancamentos-titulo pl"
+        [ngClass]="{
+          lancamentosaldo: elemento.lancamento.startsWith('SALDO')
+        }"
+        mat-cell
+        *matCellDef="let elemento"
+      >
         {{ elemento.lancamento }}
       </td>
     </ng-container>

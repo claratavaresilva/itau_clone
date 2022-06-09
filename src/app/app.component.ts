@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { List } from './services/dados.service';
 import { DadosService } from './services/dados.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { DadosService } from './services/dados.service';
 export class AppComponent implements OnInit {
   hasError: boolean;
   title = 'itau';
+  extrato: List;
 
   constructor(private dadosService: DadosService) {}
   ngOnInit(): void {
@@ -18,6 +20,7 @@ export class AppComponent implements OnInit {
         conta: '00587',
         dac: '1',
       });
+      httpResponse$.subscribe((response) => (this.extrato = response));
     } catch (error) {
       this.hasError = true;
     }
